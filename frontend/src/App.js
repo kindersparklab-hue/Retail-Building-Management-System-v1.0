@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './components/Login';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Shops from './components/Shops';
+import RentPayments from './components/RentPayments';
+// Add other components as needed
 
 function App() {
-    const token = localStorage.getItem('token');
     return (
         <Router>
             <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/dashboard" element={token ? <Dashboard /> : <Navigate to="/login" />} />
-                <Route path="/shops" element={token ? <Shops /> : <Navigate to="/login" />} />
-                <Route path="/" element={<Navigate to="/dashboard" />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/shops" element={<Shops />} />
+                <Route path="/rent" element={<RentPayments />} />
+                {/* Add routes for other modules */}
+                <Route path="/" element={<Dashboard />} />
             </Routes>
         </Router>
     );
